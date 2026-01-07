@@ -1,0 +1,33 @@
+{
+    "inbounds": [
+        {
+            "tag": "socks-in",
+            "port": 10808,
+            "protocol": "socks",
+            "settings": {
+                "auth": "noauth",
+                "udp": true
+            },
+            "sniffing": {
+                "enabled": true,
+                "destOverride": [
+                    "http",
+                    "tls"
+                ]
+            }
+        },
+        {
+            "tag": "http-in",
+            "port": 10809,
+            "protocol": "http",
+            "settings": {},
+            "sniffing": {
+                "enabled": true,
+                "destOverride": [
+                    "http",
+                    "tls"
+                ]
+            }
+        }
+    ]
+}

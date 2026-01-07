@@ -1,0 +1,29 @@
+{
+    "dns": {
+        "tag": "dns-module",
+        "queryStrategy": "UseIPv4",
+        "disableFallbackIfMatch": true,
+        "hosts": {
+            "geosite:category-ads-all": "127.0.0.1",
+            "domain:googleapis.cn": "googleapis.com"
+        },
+        "servers": [
+            {
+                "address": "223.5.5.5",
+                "domains": [
+                    "geosite:cn"
+                ]
+            },
+            {
+                "address": "8.8.8.8",
+                "domains": [
+                    "domain:googleapis.cn",
+                    "domain:gstatic.com"
+                ]
+            },
+            {
+                "address": "1.1.1.1"
+            }
+        ]
+    }
+}
