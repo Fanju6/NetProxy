@@ -40,7 +40,7 @@ jobs:
           CI: true
 
       - name: 上传安装包
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         if: success()
         with:
           name: NetProxy-Windows-Installer
