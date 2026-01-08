@@ -1,0 +1,93 @@
+/* 全局主题与基础样式 */
+
+/* 全局主题与基础样式 */
+
+:root {
+  /* 字体优化 */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+  /* 滚动条美化 */
+  --scrollbar-width: 8px;
+  --scrollbar-track: transparent;
+  --scrollbar-thumb: rgba(128, 128, 128, 0.4);
+  --scrollbar-thumb-hover: rgba(128, 128, 128, 0.6);
+}
+
+/* 深色模式适配 - 滚动条 */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --scrollbar-thumb: rgba(255, 255, 255, 0.3);
+    --scrollbar-thumb-hover: rgba(255, 255, 255, 0.5);
+  }
+}
+
+/* 基础样式 */
+html {
+  background-color: var(--monet-background, var(--mdui-color-background));
+  color: var(--monet-on-background, var(--mdui-color-on-background));
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--monet-background, var(--mdui-color-surface));
+  color: var(--monet-on-surface, var(--mdui-color-on-surface));
+  /* 避免主题切换时的闪烁 */
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+  width: var(--scrollbar-width);
+  height: var(--scrollbar-width);
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+/* 全局布局优化 */
+mdui-layout {
+  height: 100vh;
+  overflow: hidden;
+  /* 防止外层滚动 */
+}
+
+mdui-layout-main {
+  height: 100vh;
+  overflow-y: auto;
+  /* 内容区域滚动 */
+  padding: 0;
+  /* 移除默认内边距，由页面组件控制 */
+  position: relative;
+  /* 为过渡动画定位 */
+}
+
+/* 页面过渡动画 */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.fade-enter-from {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.fade-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
+  position: absolute;
+  /* 离开时脱离文档流，避免布局跳动 */
+  width: 100%;
+}

@@ -37,17 +37,23 @@ pub fn start(node_file: &str) -> Result<(), Box<dyn std::error::Error>> {
     *XRAY_PROCESS.lock().unwrap() = Some(child);
     *CURRENT_NODE.lock().unwrap() = Some(node_file.to_string());
 
+    // 启动成功，设置系统代理
+    system_proxy::set_proxy(true, 10808)?;
+
     Ok(())
 }
 
 pub fn stop() -> Result<(), Box<dyn std::error::Error>> {
     let mut process = XRAY_PROCESS.lock().unwrap();
     if let Some(ref mut child) = *process {
-        child.kill()?;
-        child.wait()?;
+        let _ = child.kill();
+        let _ = child.wait();
     }
     *process = None;
     *CURRENT_NODE.lock().unwrap() = None;
+
+    // 关闭系统代理
+    system_proxy::set_proxy(false, 10808)?;
 
     Ok(())
 }

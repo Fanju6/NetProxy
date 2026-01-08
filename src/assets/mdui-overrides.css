@@ -1,0 +1,406 @@
+/**
+ * MDUI 组件 Monet 颜色覆盖
+ * 
+ * 直接覆盖 MDUI 组件的背景色以支持 Monet 动态取色
+ */
+
+/* ==================== 卡片背景 ==================== */
+
+mdui-card {
+    background-color: var(--monet-surface-container-low, var(--mdui-color-surface-container-low)) !important;
+}
+
+mdui-card[variant="elevated"] {
+    background-color: var(--monet-surface-container-low, var(--mdui-color-surface-container-low)) !important;
+}
+
+mdui-card[variant="filled"] {
+    background-color: var(--monet-surface-container-high, var(--mdui-color-surface-container-highest)) !important;
+}
+
+mdui-card[variant="outlined"] {
+    background-color: var(--monet-surface, var(--mdui-color-surface)) !important;
+    border-color: var(--monet-outline-variant, var(--mdui-color-outline-variant)) !important;
+}
+
+/* ==================== 顶部应用栏 ==================== */
+
+mdui-top-app-bar {
+    background-color: var(--monet-surface, var(--mdui-color-surface)) !important;
+    color: var(--monet-on-surface, var(--mdui-color-on-surface)) !important;
+}
+
+/* ==================== 底部导航栏 ==================== */
+
+mdui-navigation-bar {
+    background-color: var(--monet-surface-container, var(--mdui-color-surface-container)) !important;
+}
+
+/* 导航栏项目 - 激活状态使用 Monet primary */
+mdui-navigation-bar-item[active]::part(indicator) {
+    background-color: var(--monet-secondary-container, var(--mdui-color-secondary-container)) !important;
+}
+
+mdui-navigation-bar-item[active]::part(icon),
+mdui-navigation-bar-item[active]::part(label) {
+    color: var(--monet-on-secondary-container, var(--mdui-color-on-secondary-container)) !important;
+}
+
+/* 导航栏项目 - 激活状态禁用涟漪和状态层效果 */
+mdui-navigation-bar-item[active] {
+    /* 禁用所有状态层透明度 */
+    --mdui-state-layer-hover: 0 !important;
+    --mdui-state-layer-focus: 0 !important;
+    --mdui-state-layer-pressed: 0 !important;
+    --mdui-state-layer-dragged: 0 !important;
+}
+
+mdui-navigation-bar-item[active]::part(ripple),
+mdui-navigation-bar-item[active]::part(state-layer) {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+/* ==================== 按钮 ==================== */
+
+mdui-button {
+    --mdui-comp-filled-button-container-color: var(--monet-primary);
+    --mdui-color-primary: var(--monet-primary, var(--mdui-color-primary));
+}
+
+mdui-button[variant="filled"] {
+    background-color: var(--monet-primary, var(--mdui-color-primary)) !important;
+    color: var(--monet-on-primary, var(--mdui-color-on-primary)) !important;
+}
+
+mdui-button[variant="tonal"] {
+    background-color: var(--monet-secondary-container, var(--mdui-color-secondary-container)) !important;
+    color: var(--monet-on-secondary-container, var(--mdui-color-on-secondary-container)) !important;
+}
+
+mdui-button[variant="outlined"] {
+    border-color: var(--monet-outline, var(--mdui-color-outline)) !important;
+    color: var(--monet-primary, var(--mdui-color-primary)) !important;
+}
+
+mdui-button[variant="text"] {
+    color: var(--monet-primary, var(--mdui-color-primary)) !important;
+}
+
+/* ==================== 图标按钮 ==================== */
+
+mdui-button-icon {
+    color: var(--monet-on-surface-variant, var(--mdui-color-on-surface-variant)) !important;
+}
+
+/* ==================== 浮动操作按钮 FAB ==================== */
+
+mdui-fab {
+    background-color: var(--monet-primary, var(--mdui-color-primary)) !important;
+    color: var(--monet-on-primary, var(--mdui-color-on-primary)) !important;
+}
+
+/* ==================== 芯片 Chip ==================== */
+
+mdui-chip {
+    background-color: var(--monet-surface-container-high, var(--mdui-color-surface-container-high)) !important;
+    color: var(--monet-on-surface, var(--mdui-color-on-surface)) !important;
+}
+
+mdui-chip::part(icon) {
+    color: var(--monet-on-surface-variant, var(--mdui-color-on-surface-variant)) !important;
+}
+
+/* ==================== 选项卡 Tabs ==================== */
+
+mdui-tabs {
+    /* 使用与卡片相同的背景色 */
+    --mdui-color-surface: var(--monet-surface-container-low, var(--mdui-color-surface-container-low));
+    --mdui-color-primary: var(--monet-primary, var(--mdui-color-primary));
+    --mdui-color-on-surface: var(--monet-on-surface, var(--mdui-color-on-surface));
+    --mdui-color-on-surface-variant: var(--monet-on-surface-variant, var(--mdui-color-on-surface-variant));
+}
+
+mdui-tab {
+    color: var(--monet-on-surface-variant, var(--mdui-color-on-surface-variant)) !important;
+}
+
+mdui-tab[active] {
+    color: var(--monet-primary, var(--mdui-color-primary)) !important;
+}
+
+/* ==================== 分段按钮组 Segmented Button ==================== */
+
+mdui-segmented-button-group {
+    --mdui-comp-segmented-button-container-color: var(--monet-surface-container-high);
+    --mdui-comp-segmented-button-outline-color: var(--monet-outline);
+    background-color: transparent !important;
+    border-color: var(--monet-outline, var(--mdui-color-outline)) !important;
+}
+
+mdui-segmented-button {
+    --mdui-comp-segmented-button-label-text-color: var(--monet-on-surface);
+    --mdui-comp-segmented-button-selected-container-color: var(--monet-secondary-container);
+    --mdui-comp-segmented-button-selected-label-text-color: var(--monet-on-secondary-container);
+    color: var(--monet-on-surface, var(--mdui-color-on-surface)) !important;
+    border-color: var(--monet-outline, var(--mdui-color-outline)) !important;
+}
+
+/* 分段按钮 - 选中状态 */
+mdui-segmented-button[selected] {
+    background-color: var(--monet-secondary-container, var(--mdui-color-secondary-container)) !important;
+    color: var(--monet-on-secondary-container, var(--mdui-color-on-secondary-container)) !important;
+}
+
+/* 分段按钮 - 未选中状态悬停 */
+mdui-segmented-button:not([selected]):hover {
+    background-color: var(--monet-surface-container-highest, var(--mdui-color-surface-container-highest)) !important;
+}
+
+/* 分段按钮 - 选中状态的图标颜色 */
+mdui-segmented-button[selected]::part(icon) {
+    color: var(--monet-on-secondary-container, var(--mdui-color-on-secondary-container)) !important;
+}
+
+/* ==================== 对话框 ==================== */
+
+/* 对话框 - 面板背景 */
+mdui-dialog::part(panel) {
+    background-color: var(--monet-surface-container-high, var(--mdui-color-surface-container-high)) !important;
+}
+
+/* 对话框 - 遮罩层保持半透明效果 */
+mdui-dialog::part(overlay) {
+    background-color: rgba(0, 0, 0, 0.32) !important;
+}
+
+/* ==================== 列表 ==================== */
+
+mdui-list {
+    background-color: transparent !important;
+}
+
+mdui-list-item {
+    background-color: transparent !important;
+    color: var(--monet-on-surface, var(--mdui-color-on-surface)) !important;
+}
+
+mdui-list-item:hover {
+    background-color: var(--monet-surface-container-high, var(--mdui-color-surface-container-high)) !important;
+}
+
+/* 列表项标题和描述文字颜色 */
+mdui-list-item::part(headline) {
+    color: var(--monet-on-surface, var(--mdui-color-on-surface)) !important;
+}
+
+mdui-list-item::part(description) {
+    color: var(--monet-on-surface-variant, var(--mdui-color-on-surface-variant)) !important;
+    white-space: normal !important;
+    overflow-wrap: break-word !important;
+    word-break: break-all !important;
+    line-height: 1.4 !important;
+}
+
+mdui-list-item::part(body) {
+    min-width: 0 !important;
+    overflow: visible !important;
+    flex: 1 1 auto !important;
+}
+
+mdui-list-item::part(end-icon) {
+    flex-shrink: 0 !important;
+    margin-left: 8px !important;
+}
+
+mdui-list-item[clickable] {
+    cursor: pointer;
+}
+
+mdui-list-item[clickable]:hover {
+    background-color: var(--monet-surface-variant, var(--mdui-color-surface-variant));
+}
+
+mdui-list-item:focus,
+mdui-list-item:focus-visible,
+mdui-list-item:focus-within {
+    background-color: transparent !important;
+    outline: none !important;
+}
+
+mdui-list-item:has(mdui-dropdown[open]) {
+    background-color: transparent !important;
+}
+
+mdui-list-item::part(container):focus,
+mdui-list-item::part(container):focus-visible {
+    background-color: transparent !important;
+}
+
+/* ==================== 文本输入框 ==================== */
+
+mdui-text-field {
+    --mdui-comp-text-field-filled-container-color: var(--monet-surface-container-highest, var(--mdui-color-surface-container-highest));
+}
+
+mdui-text-field::part(container) {
+    background-color: var(--monet-surface-container-highest, var(--mdui-color-surface-container-highest)) !important;
+}
+
+mdui-text-field::part(input) {
+    color: var(--monet-on-surface, var(--mdui-color-on-surface)) !important;
+}
+
+mdui-text-field::part(label) {
+    color: var(--monet-on-surface-variant, var(--mdui-color-on-surface-variant)) !important;
+}
+
+mdui-text-field[focused]::part(label) {
+    color: var(--monet-primary, var(--mdui-color-primary)) !important;
+}
+
+mdui-text-field::part(supporting) {
+    color: var(--monet-on-surface-variant, var(--mdui-color-on-surface-variant)) !important;
+}
+
+/* ==================== 下拉菜单 ==================== */
+
+mdui-dropdown {
+    background-color: transparent !important;
+}
+
+mdui-menu {
+    background-color: var(--monet-surface-container, var(--mdui-color-surface-container)) !important;
+}
+
+mdui-menu-item {
+    color: var(--monet-on-surface, var(--mdui-color-on-surface)) !important;
+}
+
+mdui-menu-item::part(container) {
+    padding: 8px 12px !important;
+}
+
+mdui-menu-item:hover {
+    background-color: var(--monet-surface-container-high, var(--mdui-color-surface-container-high)) !important;
+}
+
+/* ==================== 选择器 Select ==================== */
+
+mdui-select {
+    --mdui-color-primary: var(--monet-primary, var(--mdui-color-primary));
+    --mdui-color-surface-container-highest: var(--monet-surface-container-highest, var(--mdui-color-surface-container-highest));
+    --mdui-color-outline: var(--monet-outline, var(--mdui-color-outline));
+    --mdui-color-outline-variant: var(--monet-outline-variant, var(--mdui-color-outline-variant));
+    --mdui-color-surface-container: var(--monet-surface-container, var(--mdui-color-surface-container));
+}
+
+mdui-select::part(text-field) {
+    --mdui-color-primary: var(--monet-primary, var(--mdui-color-primary));
+    --mdui-color-outline: var(--monet-outline, var(--mdui-color-outline));
+}
+
+mdui-select::part(menu) {
+    background-color: var(--monet-surface-container, var(--mdui-color-surface-container)) !important;
+}
+
+mdui-select mdui-menu-item {
+    color: var(--monet-on-surface, var(--mdui-color-on-surface)) !important;
+}
+
+mdui-select mdui-menu-item:hover {
+    background-color: var(--monet-surface-container-high, var(--mdui-color-surface-container-high)) !important;
+}
+
+mdui-select mdui-menu-item[selected]::part(container) {
+    background-color: var(--monet-secondary-container, var(--mdui-color-secondary-container)) !important;
+}
+
+mdui-select mdui-menu-item[selected] {
+    color: var(--monet-on-secondary-container, var(--mdui-color-on-secondary-container)) !important;
+}
+
+/* ==================== 进度条 ==================== */
+
+mdui-circular-progress {
+    --mdui-color-primary: var(--monet-primary, var(--mdui-color-primary));
+}
+
+mdui-circular-progress::part(indicator) {
+    stroke: var(--monet-primary, var(--mdui-color-primary)) !important;
+}
+
+mdui-linear-progress {
+    --mdui-color-primary: var(--monet-primary, var(--mdui-color-primary));
+}
+
+mdui-linear-progress::part(indicator) {
+    background-color: var(--monet-primary, var(--mdui-color-primary)) !important;
+}
+
+/* ==================== 图标颜色 ==================== */
+
+mdui-icon {
+    color: var(--monet-on-surface-variant, var(--mdui-color-on-surface-variant));
+}
+
+/* ==================== 复选框 Checkbox ==================== */
+
+mdui-checkbox {
+    --mdui-color-primary: var(--monet-primary, var(--mdui-color-primary));
+    --mdui-color-on-primary: var(--monet-on-primary, var(--mdui-color-on-primary));
+}
+
+mdui-checkbox[checked]::part(control) {
+    background-color: var(--monet-primary, var(--mdui-color-primary)) !important;
+    border-color: var(--monet-primary, var(--mdui-color-primary)) !important;
+}
+
+mdui-checkbox[checked]::part(checked-icon) {
+    color: var(--monet-on-primary, var(--mdui-color-on-primary)) !important;
+}
+
+mdui-checkbox:not([checked])::part(control) {
+    border-color: var(--monet-on-surface-variant, var(--mdui-color-on-surface-variant)) !important;
+}
+
+mdui-checkbox:hover::part(control) {
+    border-color: var(--monet-primary, var(--mdui-color-primary)) !important;
+}
+
+mdui-checkbox:focus-visible::part(control) {
+    outline-color: var(--monet-primary, var(--mdui-color-primary)) !important;
+}
+
+/* ==================== 开关 Switch ==================== */
+
+mdui-switch {
+    --mdui-color-primary: var(--monet-primary, var(--mdui-color-primary));
+}
+
+mdui-switch:not([checked])::part(track) {
+    background-color: var(--monet-surface-variant, var(--mdui-color-surface-variant)) !important;
+}
+
+mdui-switch[checked]::part(track) {
+    background-color: var(--monet-primary-container, var(--mdui-color-primary-container)) !important;
+}
+
+mdui-switch:not([checked])::part(thumb) {
+    background-color: var(--monet-on-surface-variant, var(--mdui-color-on-surface-variant)) !important;
+}
+
+mdui-switch[checked]::part(thumb) {
+    background-color: var(--monet-primary, var(--mdui-color-primary)) !important;
+}
+
+mdui-switch[checked]::part(checked-icon) {
+    color: var(--monet-on-primary, var(--mdui-color-on-primary)) !important;
+}
+
+/* ==================== 分割线 Divider ==================== */
+
+mdui-divider {
+    background-color: var(--monet-outline-variant, var(--mdui-color-outline-variant)) !important;
+}

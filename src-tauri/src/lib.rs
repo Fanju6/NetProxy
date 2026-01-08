@@ -3,7 +3,7 @@ mod models;
 mod services;
 mod utils;
 
-use commands::{config, nodes, proxy};
+use commands::{config, monitor, nodes, proxy};
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
@@ -22,12 +22,16 @@ pub fn run() {
             nodes::import_subscription,
             nodes::list_nodes,
             nodes::delete_node,
+            nodes::ping_node,
             // 配置管理
             config::get_dns_config,
             config::save_dns_config,
             config::get_routing_config,
             config::save_routing_config,
             config::get_xray_log,
+            // 监控
+            monitor::get_traffic_stats,
+            monitor::get_ip_info,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

@@ -3,12 +3,14 @@ export interface DnsConfig {
     queryStrategy: string;
     disableFallbackIfMatch: boolean;
     hosts: Record<string, string>;
-    servers: DnsServer[];
+    servers: (string | DnsServer)[];
 }
 
 export interface DnsServer {
     address: string;
+    port?: number;
     domains?: string[];
+    expectIPs?: string[];
 }
 
 export interface RoutingConfig {

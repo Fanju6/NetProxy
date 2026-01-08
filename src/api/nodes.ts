@@ -44,3 +44,11 @@ export async function deleteNode(filePath: string): Promise<void> {
         await invoke('delete_node', { filePath });
     }
 }
+
+export async function pingNode(address: string, port: number): Promise<number> {
+    const invoke = await getInvoke();
+    if (invoke) {
+        return await invoke('ping_node', { address, port });
+    }
+    return -1;
+}
